@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>test</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+<body>
+
+	<div id="content">
+		Hello
+	</div>
+
+	<script type="text/javascript" charset="utf-8">
+		
+		var num_times = 0;
+		
+		function switchContent()
+		{
+			$.get('updated_content.html?times='+num_times, function(data) {
+				var parsed_data = jQuery.parseJSON(data);
+				$("#content").html("<img src='images/"+parsed_data.image+"' />");
+				num_times += 1;
+			});
+		}
+		
+		setTimeout(switchContent, 3000);
+	</script>
+
+</body>
+</html>
+
